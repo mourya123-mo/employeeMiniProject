@@ -16,6 +16,8 @@
     height: 100%;
     background-color: rgb(158, 158, 207);
     /* border: 1px solid red;  */
+    overflow: auto;
+    padding: 10px;
 }
 .content{
     height: 93%;
