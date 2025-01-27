@@ -43,6 +43,8 @@ export class EmployeesComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void {
     this.getEmployees();
+    // this.filter();
+    // this.pagination();
   }
 
   getEmployees() {
@@ -74,7 +76,8 @@ export class EmployeesComponent implements OnInit, AfterViewInit {
     this._employeesService
       .getFilteredEmployee(this.term)
       .subscribe((data: any) => {
-        this.employees = data;
+        // this.employees = data;
+        this.dataSource.data=data;
         console.log(data);
         
       }),
@@ -86,7 +89,8 @@ export class EmployeesComponent implements OnInit, AfterViewInit {
     this._employeesService.getPaginatedEmployees(this.limit,this.page).subscribe(
       (data:any)=>{
         console.log(data);
-        this.employees=data;
+        // this.employees=data;
+        this.dataSource.data = data;
       },(err:any)=>{
         alert('internal error');
       }
