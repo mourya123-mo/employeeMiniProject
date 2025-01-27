@@ -1,8 +1,9 @@
- <h1>Employees</h1>
+
  <div>
+  <h1>Employees</h1>
   <input type="text" [(ngModel)]="term"  (keyup)="filter()" placeholder="search....">
  </div>
-
+<hr>
  <div class="pagination">
   <select [(ngModel)]="limit">
     <option>10</option>
@@ -20,6 +21,7 @@
 
 <button (click)="pagination()" class="btn btn-primary">pagination</button> 
  </div>
+ <hr>
  
 
  
