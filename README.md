@@ -1,27 +1,51 @@
-# EmployeeMiniProject
+<h1>Employees</h1>
+<mat-paginator  [length]="10"
+              [pageSize]="100"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+</mat-paginator>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Company</td>
+            <td>Role</td>
+            <td>Package</td>
+            <td>Email</td>
+            <td>DoB</td>
+            <td>Adress</td>
+            <td>Hikes</td>
+            <td>WorkMode</td>
+            <td>Gender</td>
+            <td>Type</td>
+            <td>Wifi Bill</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.name}}</td>
+            <td>{{employee.company}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.package}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.dob}}</td>
+            <td><div>
+                {{ employee.address?.addressLine|| 'N/A'  }}
+                <td>{{employee.address?.city}}</td>
+                <td>{{employee.address?.state}}</td>
+                <td>{{employee.address?.pincode}}</td>
+            </div></td>
+            <td *ngFor="let hike of employee.hikes">
+                year:{{hike.year}} 
+                percent:{{hike.percentage}} <br>
+            </td>
+            <td>{{employee.workMode}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.type}}</td>
+            <td>{{employee.wifibill}}</td>
+        </tr>
 
-## Development server
+    </tbody>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+</table>

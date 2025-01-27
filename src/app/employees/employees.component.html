@@ -1,0 +1,155 @@
+
+ <div>
+  <h1>Employees</h1>
+  <input type="text" [(ngModel)]="term"  (keyup)="filter()" placeholder="search....">
+ </div>
+<hr>
+ <div class="pagination">
+  <select [(ngModel)]="limit">
+    <option>10</option>
+    <option >20</option>
+    <option >30</option>
+    <option >40</option>
+    <option >50</option>
+    <option >60</option>
+</select>
+<select [(ngModel)]="page">
+    <option >1</option>
+    <option >2</option>
+    <option >3</option>
+</select>
+
+<button (click)="pagination()" class="btn btn-primary">pagination</button> 
+ </div>
+ <hr>
+ 
+
+ 
+ <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by index">
+      s.No
+    </th>
+    <td mat-cell *matCellDef="let employee; let i=index"> {{i+1}} </td>
+  </ng-container> 
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+      Name
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="company">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by company">
+      Company
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.company}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by role">
+      Role
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.role}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="package">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by package">
+      Package
+    </th>
+    <td mat-cell *matCellDef="let employee" [ngClass]="{'text-danger': employee.package <= 75000, 'text-success': employee.package >75000}">
+      {{employee.package}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email">
+      Email
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="dob">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by dob">
+      DOB
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.dob}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by address">
+      Address
+    </th>
+    <td mat-cell *matCellDef="let employee"> addressLine:{{employee.address.addressLine}},
+       city: {{employee.address.city}} <br>
+       state: {{employee.address.state}} <br>
+       pincode: {{employee.address.pincode}}        
+         </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="hikes">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by hikes">
+      Hikes
+    </th>
+    <td mat-cell *matCellDef="let  employee">
+        <div *ngFor="let hike of employee.hikes">
+            percent:{{hike.percentage}}%  
+            yaer:{{hike.yaer}} <br>
+        </div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="workMode">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by workMode">
+      workMode
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.workMode}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="gender">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by gender">
+      Gender
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.gender}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by type">
+      Type
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.type}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="wifibill">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by wifibill">
+      WiFibill
+    </th>
+    <td mat-cell *matCellDef="let employee"> {{employee.wifibill}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th colspan="3" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by delete">
+      Actions
+    </th>
+    <td mat-cell *matCellDef="let employee"> <button (click)="delete(employee.id)" class="btn btn-danger">delete</button> </td>
+  </ng-container> 
+
+  <ng-container matColumnDef="veiw">
+    <th colspan="3" mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by delete">
+      
+    </th>
+    <td mat-cell *matCellDef="let employee"> <button 
+        routerLink="/employee/{{employee.id}}"
+         class="btn btn-info">veiw</button> </td>
+  </ng-container>   
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
