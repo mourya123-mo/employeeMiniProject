@@ -13,6 +13,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     HomeComponent,
     EmployeesComponent,
     EmployeeDetailsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
