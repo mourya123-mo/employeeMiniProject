@@ -13,6 +13,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { LoginComponent } from './login/login.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 
 
@@ -23,6 +24,7 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
     HomeComponent,
     EmployeesComponent,
     EmployeeDetailsComponent,
+    LoginComponent,
     CreateEmployeeComponent,
   ],
   imports: [
