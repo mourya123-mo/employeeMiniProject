@@ -1,0 +1,98 @@
+<div id="main">
+    
+    <form [formGroup]="employeeForm">
+        <h2>Create Employee</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Name</label>
+          <input  formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+         
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Company</label>
+          <input formControlName="company" type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+    
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Role</label>
+            <input formControlName="role" type="text" class="form-control" id="exampleInputPassword1">
+          </div>
+    
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">package</label>
+            <input formControlName="package"  type="number" class="form-control" id="exampleInputPassword1">
+          </div>
+    
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Email</label>
+            <input  formControlName="email"  type="email" class="form-control" id="exampleInputPassword1">
+          </div>
+    
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">DOB</label>
+            <input formControlName="dob" type="date" class="form-control" id="exampleInputPassword1">
+          </div>
+    
+         <div formGroupName="address">
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">AddressLine</label>
+                <input formControlName="addressLine" type="text" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">City</label>
+                <input formControlName= "city" type="text" class="form-control" id="exampleInputPassword1">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">State</label>
+                  <input formControlName="state" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+
+                <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">pincode</label>
+                  <input formControlName="pincode" type="number" class="form-control" id="exampleInputPassword1">
+                </div>
+         </div>
+         <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">type</label>
+              <input formControlName="type" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+            <button (click)="addHike()" class="btn btn-info">Add Hike</button>
+            <div formArrayName="hikes">
+                <div *ngFor="let hike of hikesFormArray().controls; let i = index" [formGroupName]="i">
+                  <div class="mb-3">
+                    <label for="year{{i}}" class="form-label">Year</label>
+                    <input formControlName="year" type="number" class="form-control" id="year{{i}}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="percentage{{i}}" class="form-label">Percentage</label>
+                    <input formControlName="percentage" type="number" class="form-control" id="percentage{{i}}">
+                  </div>
+                  <button (click)="delete(i)" class="btn btn-danger">Delete</button>
+                </div>
+              </div>
+             
+         <hr>
+         <label for="">Type:</label>&nbsp;
+         <input type="radio" name="workMode" formControlName="workMode" value="workfromhome" class="radio ">&nbsp;
+         <label for="">workfromhome</label>&nbsp;
+         <input  type="radio" name="workMode" formControlName="workMode" value="Workfromoffice" class="radio ">&nbsp;
+         <label for="">Workfromoffice</label><br>&nbsp;
+        
+          <div class="mb-3" *ngIf="employeeForm.get('workMode')?.value === 'workfromhome'">
+            <label for="wifibill" class="form-label">WiFi Bill</label>
+            <input formControlName="wifibill" type="number" class="form-control" id="wifibill">
+          </div>
+        
+          <div class="mb-3" *ngIf="employeeForm.get('workMode')?.value === 'Workfromoffice'">
+            <label for="travelbill" class="form-label">Travel Bill</label>
+            <input formControlName="travelbill" type="number" class="form-control" id="travelbill">
+          </div>
+
+          <hr>
+    
+    
+        
+        <button type="submit" (click)="create()" class="btn btn-primary">Submit</button>
+      </form>
+    
+</div>
