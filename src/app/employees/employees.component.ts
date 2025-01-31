@@ -43,8 +43,7 @@ export class EmployeesComponent implements OnInit, AfterViewInit {
   }
   ngOnInit(): void {
     this.getEmployees();
-    // this.filter();
-    // this.pagination();
+  
   }
 
   getEmployees() {
