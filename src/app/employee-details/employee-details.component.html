@@ -1,0 +1,26 @@
+<div class="parent">
+    <div id="main" class="card text-bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">Employee Details</div>
+        <div class="card-body">
+          <h5 class="card-title">Company:{{employee.company}}</h5>
+          <p>Name :{{employee.name}}</p>
+          <p>Role: {{employee.role}}</p>
+          <p>Package: {{employee.package}}</p>
+          <p>Email:{{employee.email}}</p>
+          <p>DOB:{{employee.dob}}</p>
+         Address: <br>
+         AddressLine:{{employee.address.addressLine}} <br>
+         City:{{employee.address.city}} <br>
+         State:{{employee.address.state}} <br>
+         Pincode:{{employee.address.pincode}} <br>
+         Hikes: <br>
+         <span *ngFor="let hike of employee.hikes">
+           yaer: {{hike.yaer}} <br>
+           Percentage: {{hike.percentage}}% <br>
+         </span>
+         WorkMode:{{employee.workMode}} <br>
+         Gender:{{employee.gender}} <br>
+         TravellBill:{{employee.travelBill}} 
+        </div>
+      </div>
+</div>
